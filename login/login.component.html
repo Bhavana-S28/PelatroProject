@@ -1,0 +1,86 @@
+<style>
+    .h2{
+        color: rgb(119, 66, 66);
+        font-weight: 700;
+        font-style:italic;
+    }
+    .h3{
+        color:rgb(233, 156, 14);
+        font-size:15px;
+        font-family:'cursive';
+        }
+    .login-container{
+        padding: 30px;
+        min-height:100%;
+        width:100%;
+        background-position: center;
+        }
+    .login{
+        color: #2455f4;
+        font-weight: bold;
+        font-size: 30px;
+        }
+    .size{
+        font-size: 18px;
+        font-weight: bold;
+        }
+    .box{
+        background-color: #c1cdf3;
+        width:50%;
+        margin: 25px auto;
+        margin-top: 75px;
+        }
+        .element {
+  border-top-style: solid;
+  border-top-width: 0px;
+  padding-top: 60px;
+}
+</style>
+        
+        
+        
+<div class="login-container box">
+    <h1 align="center" class="login">Login</h1>
+        
+    <div style="width:50%; margin: 25px auto">
+        
+        
+        <div class="alert alert-danger" *ngIf="isInvalid">Invalid username and password.</div>
+        
+        <div class="alert alert-info" *ngIf="isLogout">You logged out.</div>
+        <form #form='ngForm' (ngSubmit)="onSubmit()">
+        <div class="form-group h3">
+            <label>Email Address</label>
+            <input type="text" class="form-control form-control-lg" id="email" name="email" placeholder="Enter email"
+                required autofocus [(ngModel)]="model.username" #email="ngModel" autocomplete="email" >
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                Email is required
+            </div>
+        </div>
+                
+        <div class="form-group h3">
+            <label>Password</label>
+            <input type="password" class="form-control form-control-lg" id="password" name="password"  autocomplete="password"
+                placeholder="Password" required [(ngModel)]="model.password" #password='ngModel'>
+            <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                password is required
+            </div>
+        </div>
+        
+        <div class="form-group h3">
+            <div>
+                <input type="checkbox" id="remember_me" name="remember-me" [(ngModel)]="model.remembered">
+                <label for="remember_me" class="inline" style="margin-left:10px;">Remember Me!</label>
+                <a class="float-right" routerLink="/register">Register</a>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <button [disabled]="!form.form.valid" type="submit" class="btn btn-lg btn-primary btn-block size">login</button>
+        </div>
+        
+        </form>
+        
+    </div>
+        
+</div>
